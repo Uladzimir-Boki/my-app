@@ -56,6 +56,8 @@ jobs:
 
                     docker stop my-app-container || true
                     docker rm my-app-container || true
+
+                    echo ${{ env.ECR_REPOSITORY_URL }}:latest
                     
                     docker pull ${{ env.ECR_REPOSITORY_URL }}:latest
                     
