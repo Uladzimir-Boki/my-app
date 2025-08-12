@@ -62,7 +62,7 @@ jobs:
                     docker run -d \
                       --name my-app-container \
                       -p 8080:8080 \
-                      ${{ env.ECR_REPOSITORY_URL }}:latest
+                      ${{ secrets.AWS_ACCOUNT_ID }}.dkr.ecr.${{ secrets.AWS_REGION }}.amazonaws.com/${{ env.ECR_REPOSITORY_NAME }}:latest
                     
                     echo "Deployment finished successfully!"
                 EOF
