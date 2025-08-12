@@ -13,8 +13,8 @@ jobs:
         # Define environment variables
         env:
             AWS_REGION: ${{ secrets.AWS_REGION }}
-            ECR_REPOSITORY_NAME: my-app
-            ECR_REPOSITORY_URL: ${{ secrets.AWS_ACCOUNT_ID }}.dkr.ecr.${{ secrets.AWS_REGION }}.amazonaws.com/devops/${{ secrets.ECR_REPOSITORY_NAME }}
+            ECR_REPOSITORY_NAME: devops/my-app
+            ECR_REPOSITORY_URL: ${{ secrets.AWS_ACCOUNT_ID }}.dkr.ecr.${{ secrets.AWS_REGION }}.amazonaws.com/${{ secrets.ECR_REPOSITORY_NAME }}
         
         steps:
             - name: Checkout code
