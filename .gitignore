@@ -1,0 +1,21 @@
+# .gitignore
+
+# Ignore virtual environment folders
+venv/
+.venv/
+env/
+.env
+
+# Ignore Python-specific files
+__pycache__/
+*.py[co]
+*.log
+
+# Ignore OS-specific files
+.DS_Store
+Thumbs.db
+
+# Ignore any local configuration files
+# that may contain sensitive data
+*.conf
+*.ini
