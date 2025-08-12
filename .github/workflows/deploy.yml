@@ -44,6 +44,9 @@ jobs:
               env:
                 ECR_REGISTRY: ${{ steps.login-ecr.outputs.registry }}
               run: |
+
+                ECR_PASSWORD=$(aws ecr get-login-password --region ${{ env.AWS_REGION }})
+                
                 mkdir -p ~/.ssh/
                 echo "${{ secrets.EC2_SSH_KEY }}" > ~/.ssh/kp1.pem
                 chmod 600 ~/.ssh/kp1.pem
@@ -52,19 +55,19 @@ jobs:
                 ssh -i ~/.ssh/kp1.pem -o StrictHostKeyChecking=no ${{ secrets.EC2_USER }}@${{ secrets.EC2_HOST }} << 'EOF'
                     echo "Deployment started..."
                     
-                    aws ecr get-login-password --region ${{ env.AWS_REGION }} | docker login --username AWS --password-stdin ${{ secrets.AWS_ACCOUNT_ID }}.dkr.ecr.${{ secrets.AWS_REGION }}.amazonaws.com
+                    echo "$ECR_PASSWORD" | docker login --username AWS --password-stdin ${{ secrets.AWS_ACCOUNT_ID }}.dkr.ecr.${{ secrets.AWS_REGION }}.amazonaws.com
 
                     docker stop my-app-container || true
                     docker rm my-app-container || true
 
-                    echo ${{ env.ECR_REPOSITORY_URL }}:latest
+                    echo ${{ secrets.AWS_ACCOUNT_ID }}.dkr.ecr.${{ secrets.AWS_REGION }}.amazonaws.com/${{ env.ECR_REPOSITORY_NAME }}:latest
                     
-                    docker pull ${{ env.ECR_REPOSITORY_URL }}:latest
+                    docker pull ${{ secrets.AWS_ACCOUNT_ID }}.dkr.ecr.${{ secrets.AWS_REGION }}.amazonaws.com/${{ env.ECR_REPOSITORY_NAME }}:latest
                     
                     docker run -d \
                     --name my-app-container \
                     -p 8080:8080 \
-                    ${{ env.ECR_REPOSITORY_URL }}:latest
+                    ${{ secrets.AWS_ACCOUNT_ID }}.dkr.ecr.${{ secrets.AWS_REGION }}.amazonaws.com/${{ env.ECR_REPOSITORY_NAME }}:latest
                     
                     echo "Deployment finished successfully!"
                 EOF
