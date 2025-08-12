@@ -55,7 +55,7 @@ jobs:
                 ssh -i ~/.ssh/kp1.pem -o StrictHostKeyChecking=no ${{ secrets.EC2_USER }}@${{ secrets.EC2_HOST }} << 'EOF'
                     echo "Deployment started..."
                     
-                    echo "$ECR_PASSWORD" | docker login --username AWS --password-stdin ${{ secrets.AWS_ACCOUNT_ID }}.dkr.ecr.${{ secrets.AWS_REGION }}.amazonaws.com
+                    docker login -u AWS -p $ECR_PASSWORD ${{ secrets.AWS_ACCOUNT_ID }}.dkr.ecr.${{ secrets.AWS_REGION }}.amazonaws.com
 
                     docker stop my-app-container || true
                     docker rm my-app-container || true
