@@ -51,10 +51,9 @@ jobs:
                 echo "${{ secrets.EC2_SSH_KEY }}" > ~/.ssh/kp1.pem
                 chmod 600 ~/.ssh/kp1.pem
                 ssh-keyscan ${{ secrets.EC2_HOST }} >> ~/.ssh/known_hosts
-                cat ~/.ssh/kp1.pem
 
                 # Подключение по SSH и выполнение команд развертывания
-                ssh -i ~/.ssh/kp1.pem -o StrictHostKeyChecking=no -vvv ${{ secrets.EC2_USER }}@${{ secrets.EC2_HOST }} << 'EOF'
+                ssh -i ~/.ssh/kp1.pem -o StrictHostKeyChecking=no ${{ secrets.EC2_USER }}@${{ secrets.EC2_HOST }} << 'EOF'
                     echo "Deployment started..."
                     
                     # Остановка и удаление старого контейнера (если есть)
