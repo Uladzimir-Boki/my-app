@@ -11,7 +11,7 @@ terraform {
 }
 
 resource "aws_ecr_repository" "my_app_ecr" {
-  name = "devops/my_app"
+  name = "devops/my-app"
 }
 
 resource "aws_security_group" "my_app_sg" {
