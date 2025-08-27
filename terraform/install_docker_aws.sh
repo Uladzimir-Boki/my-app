@@ -19,7 +19,7 @@ sudo add-apt-repository -y \
 sudo apt-get update -y
 sudo apt-get install docker-ce docker-ce-cli containerd.io -y
 
-sudo usermod -aG docker $USER
+sudo usermod -aG docker ubuntu
 
 curl "https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip" -o "awscliv2.zip"
 sudo apt-get install unzip -y
