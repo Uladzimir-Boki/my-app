@@ -6,7 +6,7 @@ terraform {
   backend "s3" {
     bucket = "trainee-uladzimir-boki-flask-app-bucket"
     key    = "terraform.tfstate"
-    region = var.aws_region
+    region = "eu-north-1"
     dynamodb_table = "trainee-uladzimir-boki-terraform-locks"
     encrypt        = true
   }
