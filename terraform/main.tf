@@ -17,7 +17,7 @@ resource "aws_ecr_repository" "my_app_ecr" {
 }
 
 resource "aws_security_group" "my_app_sg" {
-  name_prefix = "my-app-sg"
+  name = "my-app-sg"
   description = "Security group for my-app EC2 instance"
 
   ingress {
