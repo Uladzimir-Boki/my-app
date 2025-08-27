@@ -25,7 +25,6 @@ curl "https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip" -o "awscliv2.zip
 sudo apt-get install unzip -y
 unzip awscliv2.zip
 sudo ./aws/install
-rm -rf awscliv2.zip aws
 
 echo "Docker and AWS CLI have been successfully installed."
 
