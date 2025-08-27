@@ -51,4 +51,6 @@ resource "aws_instance" "my_app_insatnce" {
     tags = {
         Name = "my-app-instance"
     }
+
+    user_data = file("${path.module}/install_docker_aws.sh")
 }
