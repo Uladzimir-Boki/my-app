@@ -19,3 +19,9 @@ Thumbs.db
 # that may contain sensitive data
 *.conf
 *.ini
+
+# Terraform
+.terraform/
+*.tfstate
+*.tfstate.backup
+*.lock.hcl
