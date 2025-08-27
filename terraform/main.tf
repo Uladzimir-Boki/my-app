@@ -7,6 +7,8 @@ terraform {
     bucket = "trainee-uladzimir-boki-flask-app-bucket"
     key = "devops-app/terraform.tfstate"
     region = "eu-north-1"
+    dynamodb_table = "trainee-uladzimir-boki-terraform-locks"
+    encrypt        = true
   }
 }
 
