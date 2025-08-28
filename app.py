@@ -10,7 +10,7 @@ def hello_aws():
     """
     Returns a simple greeting message.
     """
-    return 'Hello, AWS! v3.0'
+    return 'Hello, AWS! v3.1'
 
 # Запуск приложения на порту 8080, если скрипт запущен напрямую
 if __name__ == '__main__':
