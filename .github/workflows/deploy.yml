@@ -15,7 +15,6 @@ jobs:
     env:
       AWS_REGION: ${{ secrets.AWS_REGION }}
       ECR_REPOSITORY_NAME: devops/my-app
-      ECR_REPOSITORY_URL: ${{ secrets.AWS_ACCOUNT_ID }}.dkr.ecr.${{ secrets.AWS_REGION }}.amazonaws.com/devops/my-app
 
 
     steps:
@@ -49,7 +48,6 @@ jobs:
     env:
       AWS_REGION: ${{ secrets.AWS_REGION }}
       ECR_REPOSITORY_NAME: devops/my-app
-      ECR_REPOSITORY_URL: ${{ secrets.AWS_ACCOUNT_ID }}.dkr.ecr.${{ secrets.AWS_REGION }}.amazonaws.com/devops/my-app
 
 
     steps:
@@ -62,8 +60,6 @@ jobs:
 
 
       - name: Deploy to EC2 via SSH (without action)
-        env:
-          ECR_REGISTRY: ${{ secrets.AWS_ACCOUNT_ID }}.dkr.ecr.${{ env.AWS_REGION }}.amazonaws.com
         run: |
           mkdir -p ~/.ssh/
           echo "${{ secrets.EC2_SSH_KEY }}" > ~/.ssh/kp1.pem
