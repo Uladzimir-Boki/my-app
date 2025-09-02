@@ -37,5 +37,5 @@ jobs:
         working-directory: ./terraform
       
       - name: Terraform Apply
-        run: terraform apply -auto-approve -var="ec2_key_pair_name=${{ secrets.EC2_KEY_PAIR_NAME }}"
+        run: terraform apply -auto-approve -var-file=environments/dev/terraform.tfvars
         working-directory: ./terraform
